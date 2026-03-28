@@ -91,7 +91,7 @@
             min-width: 100%; 
             display: flex; 
             justify-content: center; 
-            align-items: flex-start; /* Alinha ao topo para ajudar a esconder o rodapé da imagem */
+            align-items: flex-start; 
             padding: 0 5px;
             overflow: hidden;
         }
@@ -102,9 +102,9 @@
             height: auto; 
             max-height: 500px; 
             object-fit: contain; 
-            transform: scale(1.08); /* Zoom de 8% para empurrar o canto inferior para fora */
-            transform-origin: top center; /* Garante que o bordado no topo não seja cortado */
-            margin-bottom: -20px; /* Puxa a imagem para baixo, escondendo o final dela */
+            transform: scale(1.08); 
+            transform-origin: top center; 
+            margin-bottom: -20px; 
         }
 
         .nav-btn { 
@@ -127,7 +127,6 @@
         .btn-prev { left: -20px; }
         .btn-next { right: -20px; }
 
-        /* MENSAGEM DE LOGÍSTICA */
         .delivery-notice { 
             text-align: center; 
             padding: 40px 20px; 
@@ -139,7 +138,6 @@
             border-bottom: 1px solid var(--border-soft);
         }
 
-        /* WHATSAPP FLUTUANTE */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -158,7 +156,6 @@
         }
         .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
 
-        /* RODAPÉ */
         footer { 
             padding: 60px 20px; 
             text-align: center; 
@@ -233,9 +230,11 @@
     </footer>
 
     <script>
+        // Categorias organizadas alfabeticamente
         const categories = [
             { name: "Enfeites", folder: "enfeites", prefix: "enfeite" },
             { name: "Enxovais", folder: "enxoval", prefix: "enxoval" },
+            { name: "Roupas Mêsversário", folder: "roupas", prefix: "roupas" },
             { name: "Roupas Personalizadas", folder: "roupa", prefix: "roupa" },
             { name: "Toalinhas", folder: "bordado", prefix: "bordado" }
         ];

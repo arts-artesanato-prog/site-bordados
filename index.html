@@ -30,68 +30,113 @@
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        /* HEADER / LOGO */
+        /* HEADER / LOGO CIRCULAR */
         header { 
             background: var(--bg-hero); 
             padding: 60px 20px; 
             text-align: center; 
             border-bottom: 1px solid var(--border-soft);
         }
-        .logo-img { max-width: 180px; margin-bottom: 15px; }
+        
+        .logo-img { 
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            background: #fff;
+            border: 2px solid var(--border-soft);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
         header h1 { 
             font-family: 'Playfair Display', serif; 
             font-size: 2.5em; 
             letter-spacing: 1px;
+            margin-bottom: 5px;
         }
         .tagline { font-family: 'Playfair Display', serif; font-style: italic; opacity: 0.8; }
 
-        /* SEÇÃO DE CATEGORIAS (ORDEM ALFABÉTICA) */
-        .catalog-section { padding: 60px 0; }
-        .category-block { margin-bottom: 80px; }
+        /* SEÇÃO DE CATEGORIAS */
+        .catalog-section { padding: 40px 0; }
+        .category-block { margin-bottom: 60px; padding: 0 10px; }
         .category-title { 
             font-family: 'Playfair Display', serif; 
-            font-size: 1.8em; 
-            margin-bottom: 30px; 
+            font-size: 1.6em; 
+            margin-bottom: 25px; 
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* CARROSSEL MANUAL (IMAGENS LIVRES) */
-        .carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
-        .carousel-viewport { width: 100%; overflow: hidden; }
+        /* CARROSSEL MANUAL */
+        .carousel-wrapper { 
+            position: relative; 
+            width: 100%; 
+            display: flex; 
+            align-items: center; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        
+        .carousel-viewport { 
+            width: 100%; 
+            overflow: hidden; 
+            border-radius: 15px;
+        }
+        
         .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         
         .slide { 
             min-width: 100%; 
             display: flex; 
             justify-content: center; 
-            align-items: center; 
-            padding: 0 10px;
+            align-items: flex-start; /* Alinha ao topo para ajudar a esconder o rodapé da imagem */
+            padding: 0 5px;
+            overflow: hidden;
         }
         
-        /* Imagens Livres - Sem Molduras */
+        /* AJUSTE PARA TENTAR ESCONDER A MARCA D'ÁGUA */
         .slide img { 
             max-width: 100%; 
             height: auto; 
-            max-height: 500px; /* Padronização PC/Mobile */
+            max-height: 500px; 
             object-fit: contain; 
+            transform: scale(1.08); /* Zoom de 8% para empurrar o canto inferior para fora */
+            transform-origin: top center; /* Garante que o bordado no topo não seja cortado */
+            margin-bottom: -20px; /* Puxa a imagem para baixo, escondendo o final dela */
         }
 
         .nav-btn { 
-            background: none; border: none; font-size: 2.5em; cursor: pointer; 
-            color: var(--text-black); padding: 0 15px; z-index: 10; opacity: 0.5; transition: 0.3s;
+            background: rgba(255, 255, 255, 0.8); 
+            border: 1px solid var(--border-soft);
+            font-size: 1.5em; 
+            cursor: pointer; 
+            color: var(--text-black); 
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            z-index: 10; 
+            transition: 0.3s;
         }
-        .nav-btn:hover { opacity: 1; }
+        .nav-btn:hover { background: var(--bg-hero); scale: 1.1; }
+        .btn-prev { left: -20px; }
+        .btn-next { right: -20px; }
 
         /* MENSAGEM DE LOGÍSTICA */
         .delivery-notice { 
             text-align: center; 
             padding: 40px 20px; 
             font-family: 'Playfair Display', serif; 
-            font-size: 1.2em;
+            font-size: 1.3em;
             background: var(--bg-hero);
-            margin-top: 40px;
+            margin: 40px 0;
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
         }
 
         /* WHATSAPP FLUTUANTE */
@@ -107,21 +152,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
-            transition: transform 0.3s;
+            transition: 0.3s;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
+        .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
 
-        /* RODAPÉ E MENSAGEM RECEPTIVA */
+        /* RODAPÉ */
         footer { 
             padding: 60px 20px; 
             text-align: center; 
-            background: var(--white); 
+            background: #fff; 
             border-top: 1px solid var(--border-soft); 
         }
-        .footer-logo { max-width: 120px; margin-bottom: 20px; }
+        .footer-logo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 1px solid var(--border-soft); }
+        
         .footer-message { 
             font-family: 'Playfair Display', serif; 
             max-width: 600px; 
@@ -129,14 +174,23 @@
             font-size: 1.1em; 
             font-style: italic; 
         }
+        
         .social-icons { margin-bottom: 30px; }
-        .social-icons a { margin: 0 15px; font-size: 1.2em; color: var(--text-black); text-decoration: none; }
-        .copyright { font-size: 0.85em; opacity: 0.7; border-top: 1px solid var(--border-soft); padding-top: 20px; }
+        .social-icons a { 
+            margin: 0 15px; 
+            font-size: 1em; 
+            color: var(--text-black); 
+            text-decoration: none; 
+            font-weight: 500;
+        }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8em; }
-            .slide img { max-height: 350px; }
-            .nav-btn { font-size: 1.8em; }
+        .copyright { font-size: 0.8em; opacity: 0.6; padding-top: 20px; border-top: 1px solid var(--border-soft); }
+
+        @media (max-width: 768px) {
+            .btn-prev { left: 5px; }
+            .btn-next { right: 5px; }
+            .logo-img { width: 120px; height: 120px; }
+            header h1 { font-size: 2em; }
         }
     </style>
 </head>
@@ -158,7 +212,7 @@
         <div id="catalog-content" class="catalog-section"></div>
     </main>
 
-    <div class="delivery-notice">Entregamos para sua localidade</div>
+    <div class="delivery-notice">Entregamos para sua localidade!</div>
 
     <footer>
         <div class="container">
@@ -179,9 +233,8 @@
     </footer>
 
     <script>
-        // Configurações baseadas no seu GitHub
         const categories = [
-            { name: "Enfeites", folder: "enfeites", prefix: "enfeites" },
+            { name: "Enfeites", folder: "enfeite", prefix: "enfeite" },
             { name: "Enxovais", folder: "enxoval", prefix: "enxoval" },
             { name: "Roupas Personalizadas", folder: "roupa", prefix: "roupa" },
             { name: "Toalinhas", folder: "bordado", prefix: "bordado" }
@@ -195,7 +248,6 @@
                 block.className = 'category-block';
 
                 let slidesHTML = '';
-                // Reserva de 10 slots por categoria
                 for (let i = 1; i <= 10; i++) {
                     const imgPath = `./png/${cat.folder}/${cat.prefix}${i}.png`;
                     slidesHTML += `
@@ -207,13 +259,13 @@
                 block.innerHTML = `
                     <h2 class="category-title">${cat.name}</h2>
                     <div class="carousel-wrapper">
-                        <button class="nav-btn" onclick="moveSlide(this, -1)">&#10094;</button>
+                        <button class="nav-btn btn-prev" onclick="moveSlide(this, -1)">&#10094;</button>
                         <div class="carousel-viewport">
                             <div class="carousel-track" data-index="0">
                                 ${slidesHTML}
                             </div>
                         </div>
-                        <button class="nav-btn" onclick="moveSlide(this, 1)">&#10095;</button>
+                        <button class="nav-btn btn-next" onclick="moveSlide(this, 1)">&#10095;</button>
                     </div>
                 `;
                 main.appendChild(block);
@@ -232,7 +284,6 @@
             track.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        // Remove categorias que não tiverem nenhuma imagem encontrada
         function checkEmptyTrack(img) {
             const track = img.closest('.carousel-track');
             if (track && track.children.length === 0) {
@@ -240,9 +291,7 @@
             }
         }
 
-        // Atualização automática do Ano
         document.getElementById('current-year').textContent = new Date().getFullYear();
-
         buildCatalog();
     </script>
 </body>

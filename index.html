@@ -3,140 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arts & Artesanato</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Arte & Artesanato - Enxovais e Bordados</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --off-white: #fcfcfc;
-            --palha: #f2ede4;
-            --chumbo: #2c2c2c;
-            --rosa: #e9cfcd;
+            --bg-pastel: #fdfaf6;
+            --bg-hero: #f7f1e6;
+            --text-black: #000000;
+            --border-soft: #e6e0d5;
+            --whatsapp-color: #25d366;
         }
 
-        body {
-            margin: 0; padding: 0;
-            background-color: var(--off-white);
-            color: var(--chumbo);
-            font-family: 'Montserrat', sans-serif;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--bg-pastel); 
+            color: var(--text-black); 
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER / LOGO */
+        header { 
+            background: var(--bg-hero); 
+            padding: 60px 20px; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-soft);
+        }
+        .logo-img { max-width: 180px; margin-bottom: 15px; }
+        header h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5em; 
+            letter-spacing: 1px;
+        }
+        .tagline { font-family: 'Playfair Display', serif; font-style: italic; opacity: 0.8; }
+
+        /* SEÇÃO DE CATEGORIAS (ORDEM ALFABÉTICA) */
+        .catalog-section { padding: 60px 0; }
+        .category-block { margin-bottom: 80px; }
+        .category-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8em; 
+            margin-bottom: 30px; 
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        header { padding: 40px 20px; background: var(--palha); }
-        .logo { width: 120px; height: 120px; border-radius: 50%; background: white; border: 1px solid var(--rosa); margin-bottom: 15px; object-fit: cover; }
+        /* CARROSSEL MANUAL (IMAGENS LIVRES) */
+        .carousel-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
+        .carousel-viewport { width: 100%; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         
-        .btn-orcamento {
-            display: inline-block;
-            margin: 30px 0;
-            background-color: var(--chumbo);
+        .slide { 
+            min-width: 100%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 0 10px;
+        }
+        
+        /* Imagens Livres - Sem Molduras */
+        .slide img { 
+            max-width: 100%; 
+            height: auto; 
+            max-height: 500px; /* Padronização PC/Mobile */
+            object-fit: contain; 
+        }
+
+        .nav-btn { 
+            background: none; border: none; font-size: 2.5em; cursor: pointer; 
+            color: var(--text-black); padding: 0 15px; z-index: 10; opacity: 0.5; transition: 0.3s;
+        }
+        .nav-btn:hover { opacity: 1; }
+
+        /* MENSAGEM DE LOGÍSTICA */
+        .delivery-notice { 
+            text-align: center; 
+            padding: 40px 20px; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.2em;
+            background: var(--bg-hero);
+            margin-top: 40px;
+        }
+
+        /* WHATSAPP FLUTUANTE */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-color);
             color: white;
-            padding: 16px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s;
         }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: white; }
 
-        .secao { max-width: 600px; margin: 40px auto; padding: 0 20px; text-align: left; }
-        .titulo { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 15px; border-bottom: 1px solid var(--rosa); padding-bottom: 10px; }
+        /* RODAPÉ E MENSAGEM RECEPTIVA */
+        footer { 
+            padding: 60px 20px; 
+            text-align: center; 
+            background: var(--white); 
+            border-top: 1px solid var(--border-soft); 
+        }
+        .footer-logo { max-width: 120px; margin-bottom: 20px; }
+        .footer-message { 
+            font-family: 'Playfair Display', serif; 
+            max-width: 600px; 
+            margin: 0 auto 30px; 
+            font-size: 1.1em; 
+            font-style: italic; 
+        }
+        .social-icons { margin-bottom: 30px; }
+        .social-icons a { margin: 0 15px; font-size: 1.2em; color: var(--text-black); text-decoration: none; }
+        .copyright { font-size: 0.85em; opacity: 0.7; border-top: 1px solid var(--border-soft); padding-top: 20px; }
 
-        /* Container do Carrossel */
-        .carousel { width: 100%; border-radius: 12px; overflow: hidden; background: white; position: relative; min-height: 300px; }
-        .track { display: flex; transition: transform 0.6s ease-in-out; }
-        .track img { width: 100%; height: auto; display: block; flex-shrink: 0; }
-
-        footer { background-color: var(--chumbo); color: white; padding: 40px 20px; margin-top: 60px; }
-        .redes { display: flex; justify-content: center; gap: 40px; margin-bottom: 20px; }
-        .redes a { font-size: 2.5rem; text-decoration: none; }
-        
-        /* Cores Originais Fixas */
-        .fa-instagram { color: #E4405F; }
-        .fa-facebook { color: #1877F2; }
-
-        footer p { font-size: 0.8rem; opacity: 0.8; }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8em; }
+            .slide img { max-height: 350px; }
+            .nav-btn { font-size: 1.8em; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="png/logo/logo.png" alt="Logo" class="logo">
-        <h1 style="font-family: 'Playfair Display';">Arts & Artesanato</h1>
-    </header>
-
-    <a href="https://wa.me/5535991496337?text=Olá! Gostaria de fazer meu orçamento!" class="btn-orcamento">
-        Olá! Gostaria de fazer meu orçamento!
+    <a href="https://wa.me/5535991496337?text=Olá! Gostaria de fazer meu orçamento!" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217s.231.006.332.009c.109.004.254-.041.398.305.144.346.491 1.197.535 1.284.044.087.073.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.101-.177.211-.077.383.1.173.443.731.948 1.18.652.58 1.201.759 1.374.846.173.087.275.072.376-.044.101-.116.433-.505.548-.678.116-.173.231-.144.39-.087s1.011.477 1.184.563c.173.087.289.13.332.202.045.072.045.419-.1.824z"/></svg>
     </a>
 
-    <div id="vitrine">
+    <header>
+        <div class="container">
+            <img src="./png/logo/logo1.png" alt="Arts & Artesanato Logo" class="logo-img" onerror="this.style.display='none'">
+            <h1>Arte & Artesanato</h1>
+            <p class="tagline">Presentes únicos feitos à mão com alma e carinho.</p>
         </div>
+    </header>
+
+    <main class="container">
+        <div id="catalog-content" class="catalog-section"></div>
+    </main>
+
+    <div class="delivery-notice">Entregamos para sua localidade</div>
 
     <footer>
-        <div class="redes">
-            <a href="https://www.instagram.com/arts_artesanato_/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61577553669249" target="_blank"><i class="fab fa-facebook"></i></a>
+        <div class="container">
+            <img src="./png/logo/logo1.png" alt="Arts & Artesanato Logo" class="footer-logo" onerror="this.style.display='none'">
+            <div class="footer-message">
+                Cada ponto carrega uma história e cada detalhe é pensado para tornar seus momentos ainda mais especiais. Deixe-se encantar pela delicadeza do nosso trabalho manual.
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/arts_artesanato_/" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=61577553669249" target="_blank">Facebook</a>
+            </div>
+
+            <div class="copyright">
+                &copy; <span id="current-year"></span> Arts & Artesanato - Todos os direitos reservados.
+            </div>
         </div>
-        <p>Poços de Caldas - MG | Enviamos para todo Brasil</p>
-        <p>© 2026 Arts & Artesanato</p>
     </footer>
 
     <script>
-        // CONFIGURAÇÃO AUTOMÁTICA DO GITHUB
-        const conta = 'arts-artesanato-prog';
-        const repo = 'site-bordados';
-        
-        const categorias = [
-            { nome: "🧼 Toalinhas", pasta: "bordado" },
-            { nome: "🍼 Enxoval", pasta: "enxoval" },
-            { nome: "👕 Roupas Personalizadas", pasta: "roupas" },
-            { nome: "🎀 Enfeites Personalizados", pasta: "enfeites" }
+        // Configurações baseadas no seu GitHub
+        const categories = [
+            { name: "Enfeites", folder: "enfeites", prefix: "enfeites" },
+            { name: "Enxovais", folder: "enxoval", prefix: "enxoval" },
+            { name: "Roupas Personalizadas", folder: "roupa", prefix: "roupa" },
+            { name: "Toalinhas", folder: "bordado", prefix: "bordado" }
         ];
 
-        async function carregarImagens() {
-            const vitrine = document.getElementById('vitrine');
+        function buildCatalog() {
+            const main = document.getElementById('catalog-content');
 
-            for (const cat of categorias) {
-                try {
-                    // API do GitHub que lê a pasta automaticamente
-                    const url = `https://api.github.com/repos/${conta}/${repo}/contents/png/${cat.pasta}`;
-                    const resposta = await fetch(url);
-                    const arquivos = await resposta.json();
-                    
-                    // Pega apenas arquivos de imagem
-                    const imagens = arquivos.filter(arq => arq.name.match(/\.(png|jpg|jpeg|webp)$/i));
+            categories.forEach(cat => {
+                const block = document.createElement('div');
+                block.className = 'category-block';
 
-                    if (imagens.length > 0) {
-                        const divCat = document.createElement('div');
-                        divCat.className = 'secao';
-                        
-                        const idTrack = `track-${cat.pasta}`;
-                        let htmlImagens = imagens.map(img => `<img src="${img.download_url}">`).join('');
+                let slidesHTML = '';
+                // Reserva de 10 slots por categoria
+                for (let i = 1; i <= 10; i++) {
+                    const imgPath = `./png/${cat.folder}/${cat.prefix}${i}.png`;
+                    slidesHTML += `
+                        <div class="slide">
+                            <img src="${imgPath}" onerror="this.parentElement.remove(); checkEmptyTrack(this)" alt="${cat.name}">
+                        </div>`;
+                }
 
-                        divCat.innerHTML = `
-                            <div class="titulo">${cat.nome}</div>
-                            <div class="carousel">
-                                <div class="track" id="${idTrack}">${htmlImagens}</div>
+                block.innerHTML = `
+                    <h2 class="category-title">${cat.name}</h2>
+                    <div class="carousel-wrapper">
+                        <button class="nav-btn" onclick="moveSlide(this, -1)">&#10094;</button>
+                        <div class="carousel-viewport">
+                            <div class="carousel-track" data-index="0">
+                                ${slidesHTML}
                             </div>
-                        `;
-                        vitrine.appendChild(divCat);
+                        </div>
+                        <button class="nav-btn" onclick="moveSlide(this, 1)">&#10095;</button>
+                    </div>
+                `;
+                main.appendChild(block);
+            });
+        }
 
-                        // Inicia o movimento automático
-                        iniciarCarrossel(idTrack, imagens.length);
-                    }
-                } catch (e) { console.error("Erro na pasta " + cat.pasta); }
+        function moveSlide(btn, direction) {
+            const track = btn.parentElement.querySelector('.carousel-track');
+            const slides = track.querySelectorAll('.slide');
+            if (slides.length <= 1) return;
+
+            let index = parseInt(track.getAttribute('data-index'));
+            index = (index + direction + slides.length) % slides.length;
+            
+            track.setAttribute('data-index', index);
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        // Remove categorias que não tiverem nenhuma imagem encontrada
+        function checkEmptyTrack(img) {
+            const track = img.closest('.carousel-track');
+            if (track && track.children.length === 0) {
+                track.closest('.category-block').style.display = 'none';
             }
         }
 
-        function iniciarCarrossel(id, total) {
-            let index = 0;
-            const track = document.getElementById(id);
-            setInterval(() => {
-                index++;
-                if (index >= total) index = 0;
-                track.style.transform = `translateX(-${index * 100}%)`;
-            }, 4000); // 4 segundos por foto
-        }
+        // Atualização automática do Ano
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        carregarImagens();
+        buildCatalog();
     </script>
 </body>
 </html>

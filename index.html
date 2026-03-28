@@ -3,229 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arts & Artesanato | Ateliê de Luxo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Arts & Artesanato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --off-white: #fcfcfc;
-            --cor-palha: #f2ede4;
-            --cinza-chumbo: #2c2c2c;
-            --rosa-detalhe: #e9cfcd;
-            --texto-suave: #555555;
+            --palha: #f2ede4;
+            --chumbo: #2c2c2c;
+            --rosa: #e9cfcd;
         }
 
         body {
-            margin: 0;
+            margin: 0; padding: 0;
             background-color: var(--off-white);
-            color: var(--cinza-chumbo);
+            color: var(--chumbo);
             font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* --- Header Delicado --- */
-        header {
-            padding: 60px 20px;
             text-align: center;
-            background: linear-gradient(to bottom, var(--cor-palha), var(--off-white));
         }
 
-        .logo-site {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 1px solid var(--rosa-detalhe);
-            padding: 5px;
-            margin-bottom: 20px;
-            background: white;
-            object-fit: cover;
-        }
-
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0; letter-spacing: 2px; }
-        .subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--texto-suave); margin-top: 10px; }
-
-        /* --- Botão Flutuante de Orçamento --- */
-        .btn-fixo-orcamento {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--cinza-chumbo);
+        header { padding: 40px 20px; background: var(--palha); }
+        .logo { width: 120px; height: 120px; border-radius: 50%; background: white; border: 1px solid var(--rosa); margin-bottom: 15px; object-fit: cover; }
+        
+        .btn-orcamento {
+            display: inline-block;
+            margin: 30px 0;
+            background-color: var(--chumbo);
             color: white;
-            padding: 18px 30px;
-            border-radius: 50px;
+            padding: 16px 32px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            z-index: 1000;
-            transition: 0.4s;
-            border: 1px solid var(--cinza-chumbo);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .btn-fixo-orcamento:hover {
-            background-color: #25d366; /* Cor do WhatsApp no hover */
-            border-color: #25d366;
-            color: white;
-        }
+        .secao { max-width: 600px; margin: 40px auto; padding: 0 20px; text-align: left; }
+        .titulo { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 15px; border-bottom: 1px solid var(--rosa); padding-bottom: 10px; }
 
-        /* --- Estrutura de Categorias --- */
-        .secao-vitrine {
-            max-width: 1100px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
+        /* Container do Carrossel */
+        .carousel { width: 100%; border-radius: 12px; overflow: hidden; background: white; position: relative; min-height: 300px; }
+        .track { display: flex; transition: transform 0.6s ease-in-out; }
+        .track img { width: 100%; height: auto; display: block; flex-shrink: 0; }
 
-        .categoria-container { margin-bottom: 80px; }
-
-        .titulo-cat {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--cinza-chumbo);
-            border-left: 4px solid var(--rosa-detalhe);
-            padding-left: 15px;
-        }
-
-        /* --- Carrossel Inteligente --- */
-        .carrossel-wrapper {
-            width: 100%;
-            height: 500px;
-            border-radius: 25px;
-            overflow: hidden;
-            background: var(--cor-palha);
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-        }
-
-        .track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .track img {
-            min-width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* --- Rodapé com Ícones Coloridos --- */
-        footer {
-            background-color: var(--cinza-chumbo);
-            color: var(--cor-palha);
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .social-icons-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .icon-link {
-            font-size: 2.5rem;
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
-
-        .icon-link:hover { transform: scale(1.2); }
-
-        /* Cores Originais */
-        .fa-instagram {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        footer { background-color: var(--chumbo); color: white; padding: 40px 20px; margin-top: 60px; }
+        .redes { display: flex; justify-content: center; gap: 40px; margin-bottom: 20px; }
+        .redes a { font-size: 2.5rem; text-decoration: none; }
+        
+        /* Cores Originais Fixas */
+        .fa-instagram { color: #E4405F; }
         .fa-facebook { color: #1877F2; }
 
-        footer p { opacity: 0.6; font-size: 0.8rem; margin-top: 20px; }
-
+        footer p { font-size: 0.8rem; opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5535991496337?text=Olá! Gostaria de fazer meu orçamento!" target="_blank" class="btn-fixo-orcamento">
-        <i class="fab fa-whatsapp"></i> Olá! Gostaria de fazer meu orçamento! 
-    </a>
-
     <header>
-        <img src="png/logo/logo.png" alt="Arts & Artesanato" class="logo-site">
-        <h1>Arts & Artesanato</h1>
-        <p class="subtitle">Peças Únicas e Afetivas • Bordando Histórias</p>
+        <img src="png/logo/logo.png" alt="Logo" class="logo">
+        <h1 style="font-family: 'Playfair Display';">Arts & Artesanato</h1>
     </header>
 
-    <div class="secao-vitrine" id="categorias-root">
+    <a href="https://wa.me/5535991496337?text=Olá! Gostaria de fazer meu orçamento!" class="btn-orcamento">
+        Olá! Gostaria de fazer meu orçamento!
+    </a>
+
+    <div id="vitrine">
         </div>
 
     <footer>
-        <div class="social-icons-container">
-            <a href="https://www.instagram.com/arts_artesanato_/" target="_blank" class="icon-link">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61577553669249" target="_blank" class="icon-link">
-                <i class="fab fa-facebook"></i>
-            </a>
+        <div class="redes">
+            <a href="https://www.instagram.com/arts_artesanato_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61577553669249" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
-        <p>Poços de Caldas, MG | Enviamos para todo o Brasil.</p>
-        <p>© 2026 Arts & Artesanato - Todos os direitos reservados.</p>
+        <p>Poços de Caldas - MG | Enviamos para todo Brasil</p>
+        <p>© 2026 Arts & Artesanato</p>
     </footer>
 
     <script>
-        const USER = 'arts-artesanato-prog';
-        const REPO = 'site-bordados';
-
+        // CONFIGURAÇÃO AUTOMÁTICA DO GITHUB
+        const conta = 'arts-artesanato-prog';
+        const repo = 'site-bordados';
+        
         const categorias = [
-            { display: "🧼 Toalinhas", folder: "bordado" },
-            { display: "🍼 Enxoval", folder: "enxoval" },
-            { display: "👕 Roupas Personalizadas", folder: "roupas" },
-            { display: "🎀 Enfeites Personalizados", folder: "enfeites" }
+            { nome: "🧼 Toalinhas", pasta: "bordado" },
+            { nome: "🍼 Enxoval", pasta: "enxoval" },
+            { nome: "👕 Roupas Personalizadas", pasta: "roupas" },
+            { nome: "🎀 Enfeites Personalizados", pasta: "enfeites" }
         ];
 
-        const root = document.getElementById('categorias-root');
+        async function carregarImagens() {
+            const vitrine = document.getElementById('vitrine');
 
-        async function loadImages() {
-            for (let cat of categorias) {
+            for (const cat of categorias) {
                 try {
-                    const response = await fetch(`https://api.github.com/repos/${USER}/${REPO}/contents/png/${cat.folder}`);
-                    const files = await response.json();
-                    const images = files.filter(f => f.name.match(/\.(png|jpg|jpeg)$/i));
+                    // API do GitHub que lê a pasta automaticamente
+                    const url = `https://api.github.com/repos/${conta}/${repo}/contents/png/${cat.pasta}`;
+                    const resposta = await fetch(url);
+                    const arquivos = await resposta.json();
+                    
+                    // Pega apenas arquivos de imagem
+                    const imagens = arquivos.filter(arq => arq.name.match(/\.(png|jpg|jpeg|webp)$/i));
 
-                    if (images.length > 0) {
-                        const section = document.createElement('div');
-                        section.className = 'categoria-container';
+                    if (imagens.length > 0) {
+                        const divCat = document.createElement('div');
+                        divCat.className = 'secao';
                         
-                        let imgsHtml = images.map(img => `<img src="${img.download_url}" loading="lazy">`).join('');
+                        const idTrack = `track-${cat.pasta}`;
+                        let htmlImagens = imagens.map(img => `<img src="${img.download_url}">`).join('');
 
-                        section.innerHTML = `
-                            <div class="titulo-cat">${cat.display}</div>
-                            <div class="carrossel-wrapper">
-                                <div class="track" id="track-${cat.folder}">${imgsHtml}</div>
+                        divCat.innerHTML = `
+                            <div class="titulo">${cat.nome}</div>
+                            <div class="carousel">
+                                <div class="track" id="${idTrack}">${htmlImagens}</div>
                             </div>
                         `;
-                        root.appendChild(section);
-                        initCarousel(`track-${cat.folder}`, images.length);
+                        vitrine.appendChild(divCat);
+
+                        // Inicia o movimento automático
+                        iniciarCarrossel(idTrack, imagens.length);
                     }
-                } catch (e) { console.error("Erro ao carregar: " + cat.folder); }
+                } catch (e) { console.error("Erro na pasta " + cat.pasta); }
             }
         }
 
-        function initCarousel(id, count) {
+        function iniciarCarrossel(id, total) {
             let index = 0;
             const track = document.getElementById(id);
             setInterval(() => {
                 index++;
-                if (index >= count) index = 0;
+                if (index >= total) index = 0;
                 track.style.transform = `translateX(-${index * 100}%)`;
-            }, 4500); // Troca a cada 4.5 segundos
+            }, 4000); // 4 segundos por foto
         }
 
-        loadImages();
+        carregarImagens();
     </script>
-
 </body>
 </html>
